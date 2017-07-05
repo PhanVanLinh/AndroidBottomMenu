@@ -1,0 +1,74 @@
+# Android Bottom Bar
+
+![alt tag](/image.gif)
+
+### How to implements it
+
+1. Copy [BottomMenu.class and BottomMenuItem.class](/app/src/main/java/com/toong/androidbottommenu/bottommenu/) to your project
+2. Copy [bottom_menu.xml and bottom_menu_item.xml](/app/src/main/res/layout) to your layout folder
+3. Copy [bottom_bar_divider.xml](/app/src/main/res/drawable/bottom_bar_divider.xml) to your drawable folder
+4. Open your [bottom_menu.xml](/app/src/main/res/layout/bottom_menu.xml) then change
+```com.toong.androidbottombar.bottombar.BottomMenuItem``` to the correct ```BottomMenu``` path (for example: ```com.exampleproject.bottombar.BottomMenuItem```
+   
+5. Open your **styles.xml** then add
+```
+<declare-styleable name="BottomMenuItemStyle">
+  <attr format="string" name="title"/>
+  <attr format="reference" name="normalImage"/>
+  <attr format="reference" name="selectedImage"/>
+  <attr format="color" name="normalTitleColor"/>
+  <attr format="color" name="selectedTitleColor"/>
+</declare-styleable>
+```
+refer: [styles.xml](/app/src/main/res/values/styles.xml)
+
+6. (Final step) Open the **layout of the Activity** that you want to add BottomMenu then add
+```
+<com.toong.androidbottombar.bottommenu.BottomMenu
+    android:id="@+id/bottom_menu"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    />
+```
+refer: [activity_main.xml](/app/src/main/res/layout/activity_main.xml)
+
+
+### Some example
+
+#### Listen Menu change
+```
+mBottomMenu.setOnMenuChanged(new BottomMenu.OnMenuChanged() {
+    @Override
+    public void onMenuChanged() {
+        ...
+    }
+});
+```
+#### Listen Menu item clicked
+```
+mBottomMenu.setOnItemClickListener(new BottomMenu.OnMenuItemClickListener() {
+    @Override
+    public void onMenuItemClick(int position) {
+        ...
+    }
+});
+```
+#### Select a menu
+```
+mBottomMenu.select(position);
+```
+#### getSelectedMenuPosition
+```
+mBottomMenu.getSelectedMenuPosition();
+```
+#### getSelectedMenuPositionTitle
+```
+mBottomMenu.getSelectedMenuPositionTitle();
+```
+#### get total menu
+```
+mBottomMenu.size();
+```
+
+
+
