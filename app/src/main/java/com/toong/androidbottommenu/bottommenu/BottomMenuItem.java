@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import com.toong.androidbottommenu.R;
 public class BottomMenuItem extends LinearLayout {
     private ImageView imgImage;
     private TextView tvTitle;
+    private TextView tvBadge;
 
     private Drawable normalImage;
     private Drawable selectedImage;
@@ -41,6 +43,7 @@ public class BottomMenuItem extends LinearLayout {
 
         imgImage = (ImageView) findViewById(R.id.image);
         tvTitle = (TextView) findViewById(R.id.text_title);
+        tvBadge = (TextView) findViewById(R.id.text_badge);
 
         TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.BottomMenuItemStyle);
         String text = ta.getString(R.styleable.BottomMenuItemStyle_title);
@@ -74,5 +77,17 @@ public class BottomMenuItem extends LinearLayout {
 
     public String getTitle() {
         return tvTitle.getText().toString();
+    }
+
+    public void setBadge(int badge) {
+        if (badge == 0) {
+            hideBadge();
+        }
+        tvBadge.setText(""+badge);
+        tvBadge.setVisibility(View.VISIBLE);
+    }
+
+    public void hideBadge() {
+        tvBadge.setVisibility(View.GONE);
     }
 }

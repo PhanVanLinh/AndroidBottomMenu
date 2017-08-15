@@ -113,6 +113,10 @@ public class BottomMenu extends LinearLayout {
         mOnMenuChanged = onMenuChanged;
     }
 
+    public void showBadge(int position, int badge) {
+        getMenuItem(position).setBadge(badge);
+    }
+
     /**
      * Callback when we click a menu item
      */

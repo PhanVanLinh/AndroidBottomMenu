@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         bottomMenu.select(2); // select page 2 as default
 
         handleChangPage();
+
+        bottomMenu.showBadge(1,1);
+        bottomMenu.showBadge(4,2);
     }
 
     /**
